@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "Feeling the Love",
+  "description": "Add Falling In Love to any web site",
+  "version": "0.1",
+
+  "icons": { "16": "images/icon16.png",
+  	     "48": "images/icon48.png",
+	     "128": "images/icon128.png"
+	     },
+
+  "permissions": [ "storage" ],
+
+  "options_page" : "options.html",
+
+  "web_accessible_resources": [
+    "js/hearts.min.js",
+    "js/jquery-1.9.1.min.js",
+    "js/jquery.serialize-hash.js",
+    "js/json2.js",
+    "js/fallinginloveext.js"
+  ],
+
+  "content_scripts": [ {
+      "matches": [ "http://*/*" ],
+      "js": [
+	   "js/hearts.min.js",
+	   "js/jquery-1.9.1.min.js",
+	   "js/jquery.serialize-hash.js",
+	   "js/json2.js",
+	   "js/feelingthelove.js"
+      ]
+  } ]
+}
