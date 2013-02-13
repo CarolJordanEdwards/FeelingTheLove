@@ -5,7 +5,7 @@
  * We use chrome.storage to store options
  */
 var FeelingTheLoveOptions =  {
-    fields: [ "day", "month", "maxHearts", "newHeartDelay", "colors", "minOpacity", "maxOpacity", "minScale", "maxScale", "minDuration", "maxDuration", "minHearts", "maxHearts" ],
+    fields: [ "day", "month", "maxHearts", "newHeartDelay", "colors", "minOpacity", "maxOpacity", "minScale", "maxScale", "minDuration", "maxDuration", "minHearts", "maxHearts", "endAfterNumHearts", "endAfterNumSeconds" ],
 
     init: function() {
 	var defaults = {
@@ -26,32 +26,29 @@ var FeelingTheLoveOptions =  {
             endAfterNumSeconds: 30   // stop creating new hearts after this many seconds
 	};
 
-	chrome.storage.sync.get( defaults , function( obj ) { FeelingTheLoveOptions.populate( obj ) } );
-
+	// attach handlers to form elements
 	$( 'form' ).submit( function( e ) { e.preventDefault(); FeelingTheLoveOptions.save( $( this ) ); } );
+	$( '#cancel' ).click( function( ) { window.close(); } );
+	$( '#clear' ).click( function( ) { chrome.storage.sync.clear(); console.log( 'clear' ); } );
 
-	Hearts();
+	// get options from synced storage
+	chrome.storage.sync.get( defaults , function( obj ) { FeelingTheLoveOptions.populate( obj ) } );
     },
 
     populate: function( obj ) {
-	console.log( obj );
-
-	console.log( 'maxHearts ' + obj.maxHearts );
-
 	for( var i = 0; i < FeelingTheLoveOptions.fields.length; i++ ) {
 	    $( 'input[name=' + FeelingTheLoveOptions.fields[ i ] + ']' ).attr( 'value', obj[ FeelingTheLoveOptions.fields[ i ] ] );
 	}
-
     },
 
     save: function( form ) {
 	var hash = form.serializeHash();
-	var options = { 'options': hash };
+
+	console.log( 'saving day ' + hash.day + ' month ' + hash.month );
 
 	chrome.storage.sync.set( hash );
 	console.log( 'saved' );
-    },
-
+    }
 };
 
 FeelingTheLoveOptions.init();

@@ -14,21 +14,19 @@
 
   "options_page" : "options.html",
 
+  "update_url": "http://raw.github.com/romkey/FeelingTheLove/feelingthelove.crx/updates.xml",
+
   "web_accessible_resources": [
     "js/hearts.min.js",
     "js/jquery-1.9.1.min.js",
     "js/jquery.serialize-hash.js",
-    "js/json2.js",
-    "js/fallinginloveext.js"
+    "js/feelingthelove.js"
   ],
 
   "content_scripts": [ {
       "matches": [ "http://*/*" ],
       "js": [
 	   "js/hearts.min.js",
-	   "js/jquery-1.9.1.min.js",
-	   "js/jquery.serialize-hash.js",
-	   "js/json2.js",
 	   "js/feelingthelove.js"
       ]
   } ]

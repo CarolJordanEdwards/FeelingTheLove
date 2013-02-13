@@ -21,6 +21,7 @@ var FeelingTheLove = {
 
     run: function( obj ) {
 	console.log( 'maxHearts ' + obj.maxHearts );
+	console.log( 'day ' + obj.day + ' month ' + obj.month );
 
 	// is today the day?
 	var d = new Date();

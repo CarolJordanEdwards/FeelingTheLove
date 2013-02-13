@@ -1,56 +1,61 @@
 <html>
   <head>
-    <style>input[type=number] { width: 6em; } fieldset { width: 32em; }</style>
+    <style>body { font-family: sans-serif; } input[type=number] { width: 4em; } form{ margin: 2em; padding: 2em; width: 32em;background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb83fa), color-stop(74%,#e93cec)); } #main { margin-left:auto; margin-right: auto;  } legend { font-weight: bold; font-size: 1.4em; }</style>
   </head>
   <body>
-    <form>
-      <fieldset>
-        <legend>Feeling the Love Options</legend>
-        <label for='maxHearts'>Maximum number of hearts</label>
-        <input type='number' name='maxHearts' /><br/>
+    <div id='main'>
+      <form>
+        <fieldset>
+          <legend>Feeling the Love Options</legend>
+          <label for='month'>Run only on month, day (0,0 to run all the time)</label>
+          <input type='number' name='month' min="0" max="12" /><input type='number' name='day' min="0" max="31" /><br/>
 
-        <label for='newHeartDelay'>New heart delay</label>
-        <input type='number' name='newHeartDelay' /><br/>
-
-        <label for='colors'>Colors</label>
-        <input type='text' name='colors' /><br/>
-
-        <label for='minOpacity'>Minimum opacity</label>
-        <input type='text' name='minOpacity' /><br/>
-
-        <label for='maxOpacity'>Maximum opacity</label>
-        <input type='text' name='maxOpacity' /><br/>
-
-        <label for='minScale'>Minimum scale</label>
-        <input type='text' name='minScale' /><br/>
-
-        <label for='maxScale'>Maximum scale</label>
-        <input type='text' name='maxScale' /><br/>
-
-        <label for='minDuration'>Minimum duration</label>
-        <input type='number' name='minDuration' /><br/>
-
-        <label for='maxDuration'>Maximum duration</label>
-        <input type='number' name='maxDuration' /><br/>
-
-        <label for='endAfterNumHearts'>End after number of hearts</label>
-        <input type='number' name='endAfterNumHearts' /><br/>
-
-        <label for='endAfterNumSeconds'>End after number of seconds</label>
-        <input type='number' name='endAfterNumSeconds' /><br/>
-
-        <input type='submit' value='Save' /><input type='reset' value='Reset' /><button>Cancel</button>
-
-      </fieldset>
-    </form>
-
-    <p>
-        Adds <a href='http://blog.rnf.me/Falling-in-Love/' target='_blank'>Falling in Love</a> by <a href='http://twitter.com/rfreebern' target='_blank'>@rfreebern</a> to any web site.
-    </p>
-    <p>
-        <a href='' target='_blank'>Feeling the Love</a> Google Chrome extension by <a href='http://romkey.com/' target='_blank'>John Romkey</a>. <a href='https://github.com/romkey/FeelingTheLove' target='_blank'>Source on Github</a>.
-    </p>
-
+          <label for='maxHearts'>Maximum number of hearts</label>
+          <input type='number' name='maxHearts' /><br/>
+  
+          <label for='newHeartDelay'>New heart delay</label>
+          <input type='number' name='newHeartDelay' /><br/>
+  
+          <label for='colors'>Colors</label>
+          <input type='text' name='colors' /><br/>
+  
+          <label for='minOpacity'>Minimum opacity</label>
+          <input type='text' name='minOpacity' /><br/>
+  
+          <label for='maxOpacity'>Maximum opacity</label>
+          <input type='text' name='maxOpacity' /><br/>
+  
+          <label for='minScale'>Minimum scale</label>
+          <input type='text' name='minScale' /><br/>
+  
+          <label for='maxScale'>Maximum scale</label>
+          <input type='text' name='maxScale' /><br/>
+  
+          <label for='minDuration'>Minimum duration</label>
+          <input type='number' name='minDuration' /><br/>
+  
+          <label for='maxDuration'>Maximum duration</label>
+          <input type='number' name='maxDuration' /><br/>
+  
+          <label for='endAfterNumHearts'>End after number of hearts</label>
+          <input type='number' name='endAfterNumHearts' /><br/>
+  
+          <label for='endAfterNumSeconds'>End after number of seconds</label>
+          <input type='number' name='endAfterNumSeconds' /><br/>
+  
+          <input type='submit' value='Save' /><input type='reset' value='Reset' /><button id='cancel'>Cancel</button>
+  
+        </fieldset>
+      </form>
+  
+      <p>
+          Adds <a href='http://blog.rnf.me/Falling-in-Love/' target='_blank'>Falling in Love</a> by <a href='http://twitter.com/rfreebern' target='_blank'>@rfreebern</a> to any web site.
+      </p>
+      <p>
+          <a href='' target='_blank'>Feeling the Love</a> Google Chrome extension by <a href='http://romkey.com/' target='_blank'>John Romkey</a>. <a href='https://github.com/romkey/FeelingTheLove' target='_blank'>Source on Github</a>.
+      </p>
+      <button id='clear'>Clear</button>
+    </div>  
     <script src='js/jquery-1.9.1.min.js'></script>
     <script src='js/jquery.serialize-hash.js'></script>
     <script src='js/hearts.min.js'></script>
