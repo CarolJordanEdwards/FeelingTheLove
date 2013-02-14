@@ -11,7 +11,7 @@ var FeelingTheLoveOptions =  {
 	var defaults = {
 	    day: 14,
 	    month: 2,
-            element: document.body,  // display hearts within this element
+            element: 'document.body',  // display hearts within this element
             zIndex: -999999,         // create hearts at this z-index
             maxHearts: 12,           // maximum on screen at once
             newHeartDelay: 600,      // delay between creating new hearts
@@ -44,7 +44,13 @@ var FeelingTheLoveOptions =  {
     save: function( form ) {
 	var hash = form.serializeHash();
 
-	console.log( 'saving day ' + hash.day + ' month ' + hash.month );
+	console.log( 'before' );
+	console.log( hash.colors );
+
+	// get rid of whitespace and split the colors
+	hash.colors = hash.colors.replace(/ /g, '').split( ',' );
+	console.log( 'after' );
+	console.log( hash.colors );
 
 	chrome.storage.sync.set( hash );
 	console.log( 'saved' );

@@ -24,10 +24,11 @@
   ],
 
   "content_scripts": [ {
-      "matches": [ "http://*/*" ],
+      "matches": [ "http://*/*", "https://*/*" ],
       "js": [
 	   "js/hearts.min.js",
 	   "js/feelingthelove.js"
-      ]
+      ],
+      "css": [ "css/hearts.min.css" ]
   } ]
 }

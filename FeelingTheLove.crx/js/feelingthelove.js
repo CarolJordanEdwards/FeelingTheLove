@@ -1,7 +1,7 @@
 var FeelingTheLove = {
     defaults: {
-        element: document.body,  // display hearts within this element
-        zIndex: -999999,         // create hearts at this z-index
+	month: 2,
+	day: 14,
         maxHearts: 12,           // maximum on screen at once
         newHeartDelay: 600,      // delay between creating new hearts
         colors: ['red', 'pink'], // colors to be randomly selected from
@@ -16,21 +16,21 @@ var FeelingTheLove = {
     },
 
     init: function() {
+	// retrieve the options from persistent, synced storage
 	chrome.storage.sync.get( FeelingTheLove.defaults , function( obj ) { FeelingTheLove.run( obj ) } );
     },
 
     run: function( obj ) {
-	console.log( 'maxHearts ' + obj.maxHearts );
-	console.log( 'day ' + obj.day + ' month ' + obj.month );
-
 	// is today the day?
 	var d = new Date();
-	if( ( ( obj.day == 0 ) && ( obj.month == 0 ) ) || ( ( d.getDate() == obj.day ) && ( d.getMonth() == obj.month ) ) ) {
-	    console.log( 'hearts' );
+	console.log( d.getDate() + ', ' + d.getMonth() );
+
+	// should we run Hearts? Run it if the day and month are set to 0 or the day is today
+	if( ( ( obj.day == 0 ) && ( obj.month == 0 ) ) || ( ( d.getDate() == obj.day ) && ( d.getMonth() + 1 == obj.month ) ) ) {
+	    delete obj[ "day" ];
+	    delete obj[ "month" ];
 
 	    Hearts( obj );
-	} else {
-	    console.log( 'no hearts' );
 	}
     }
 };
